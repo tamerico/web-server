@@ -37,8 +37,18 @@ remote: -----> Build failed
 // eu tambem instalei via npm install vsts-npm-auth   mas nao sei como usar nao funcionou.
 
 
+/*  Comando para subir no heroku
+git push heroku main
+*/
+
+
+// de inicio o heroku reclamou do erro H10 entao eu corrigi o arquivo Procfile
+// outro erro: H14
+
 
 // comandos heroku
+
+
 
 /*
  heroku run bash
