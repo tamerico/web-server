@@ -3,7 +3,7 @@ var app = express();
 var cont = 1;
 var contAbout = 1;
 
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;  // || this is the or operator 
 
 var middleware = require ("./middleware");
 
