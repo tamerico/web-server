@@ -4,8 +4,8 @@
   "engines": {
     "node": "16.x"
   },
-  "description": "webserver nodejs test",
-  "main": "server.js",
+  "description": "web server from node.js developer course at udemy",
+  "main": "middleware.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -14,13 +14,13 @@
     "type": "git",
     "url": "git+https://github.com/tamerico/web-server.git"
   },
-  "keywords": [
-    "nodejs"
-  ],
-  "author": "tamer",
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/tamerico/web-server/issues"
   },
-  "homepage": "https://github.com/tamerico/web-server#readme"
+  "homepage": "https://github.com/tamerico/web-server#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
 }
