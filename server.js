@@ -35,7 +35,42 @@ remote: -----> Build failed
 // https://docs.microsoft.com/pt-br/azure/devops/artifacts/npm/npmrc?view=azure-devops&tabs=linux%2Cclassic
 // https://stackoverflow.com/questions/50612549/setting-up-username-and-password-for-npm-registry-url
 
-// eu tambem instalei via npm install vsts-npm-auth   mas nao sei como usar nao funcionou.
+
+/**
+ *  para que tudo rode bem o package.json deve ter  o parametro engine.node=16.x conforme ilustrado abaixo:
+ *  Isto é importante observar pois o comando npm init nao insere este parametro.
+ * 
+ * {
+  "name": "web-server",
+  "version": "1.0.0",
+  "engines": {
+    "node": "16.x"
+  },
+  "description": "web server from node.js developer course at udemy",
+  "main": "middleware.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tamerico/web-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tamerico/web-server/issues"
+  },
+  "homepage": "https://github.com/tamerico/web-server#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
+ * 
+ * 
+ */
+
+
 
 
 /*  Comando para subir no heroku
@@ -77,6 +112,8 @@ web.1: crashed 2022/08/17 16:15:27 -0300 (~ 1m ago)
 
 
 /**
+ 
+ * 
  heroku local web
  4:21:34 PM web.1 |  npm
 4:21:34 PM web.1 |   WARN lifecycle The node binary used for scripts is /snap/bin/node but npm is using /snap/node/6331/bin/node itself. Use the `--scripts-prepend-node-path` option to include the path for the node binary npm was executed with.
@@ -85,6 +122,90 @@ web.1: crashed 2022/08/17 16:15:27 -0300 (~ 1m ago)
 4:21:35 PM web.1 |  /home/tamer/Documents/01 -projects/curso-udemy-javascript/web-server
 4:21:35 PM web.1 |  running web at 5000
 
+ * 
+ */
+
+
+
+/**
+ * *  neste comentario esta o exemplo de um retorno esperado ao executar o comando : git push heroku main
+ * 
+ * 
+ tamer@tamer-670Z5E:~/Documents/01 -projects/curso-udemy-javascript/web-server$ git push heroku main
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 302 bytes | 302.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0)
+remote: Compressing source files... done.
+remote: Building source:
+remote: 
+remote: -----> Building on the Heroku-20 stack
+remote: -----> Using buildpack: heroku/nodejs
+remote: -----> Node.js app detected
+remote:        
+remote: -----> Creating runtime environment
+remote:        
+remote:        NPM_CONFIG_LOGLEVEL=error
+remote:        NODE_VERBOSE=false
+remote:        NODE_ENV=production
+remote:        NODE_MODULES_CACHE=true
+remote:        
+remote: -----> Installing binaries
+remote:        engines.node (package.json):  16.x
+remote:        engines.npm (package.json):   unspecified (use default)
+remote:        
+remote:        Resolving node version 16.x...
+remote:        Downloading and installing node 16.17.0...
+remote:        Using default npm version: 8.15.0
+remote:        
+remote: -----> Restoring cache
+remote:        - npm cache
+remote:        
+remote: -----> Installing dependencies
+remote:        Installing node modules
+remote:        
+remote:        added 57 packages, and audited 58 packages in 1s
+remote:        
+remote:        7 packages are looking for funding
+remote:          run `npm fund` for details
+remote:        
+remote:        found 0 vulnerabilities
+remote:        
+remote: -----> Build
+remote:        
+remote: -----> Caching build
+remote:        - npm cache
+remote:        
+remote: -----> Pruning devDependencies
+remote:        
+remote:        up to date, audited 58 packages in 1s
+remote:        
+remote:        7 packages are looking for funding
+remote:          run `npm fund` for details
+remote:        
+remote:        found 0 vulnerabilities
+remote:        
+remote: -----> Build succeeded!
+remote: -----> Discovering process types
+remote:        Default types for buildpack -> web
+remote: 
+remote: -----> Compressing...
+remote:        Done: 32.9M
+remote: -----> Launching...
+remote:        Released v5
+remote:        https://shrouded-cove-92073.herokuapp.com/ deployed to Heroku
+remote: 
+remote: This app is using the Heroku-20 stack, however a newer stack is available.
+remote: To upgrade to Heroku-22, see:
+remote: https://devcenter.heroku.com/articles/upgrading-to-the-latest-stack
+remote: 
+remote: Verifying deploy... done.
+To https://git.heroku.com/shrouded-cove-92073.git
+   b4c3d72..0874266  main -> main
+
+ * 
  * 
  */
 
@@ -124,6 +245,8 @@ app.get('/about', middleware.requireAuthentication, function(rq, rs){
 
 // expor um folder 
 console.log(__dirname);  // verificar o diretorio que o server está rodando
+
+// se nao existir uma metodo get para a pasta raiz (/) o express pega o arquivo index.html
 app.use(express.static ( __dirname + '/public')   ); // modifica o diretorio para o express
 
 
