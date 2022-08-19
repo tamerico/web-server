@@ -1,7 +1,10 @@
 {
   "name": "web-server",
   "version": "1.0.0",
-   "description": "web server from node.js developer course at udemy",
+  "engines": {
+    "node": "16.x"
+  },
+  "description": "web server from node.js developer course at udemy",
   "main": "middleware.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
