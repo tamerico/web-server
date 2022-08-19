@@ -104,13 +104,13 @@ var middleware = require ("./middleware");
 
 app.use(middleware.logger);
 
-app.get('/', function(rq, rs){
+// app.get('/', function(rq, rs){
 
-    rs.send('teste / ok');
-    console.log('oi' + cont++);
+//     rs.send('teste / ok');
+//     console.log('oi' + cont++);
 
 
-});
+// });
 
 
 
